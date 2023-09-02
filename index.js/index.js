@@ -1,22 +1,29 @@
 
-var num1=Math.random();
-num1*=6;
-var num2=Math.random();
-num2*=6;
-num1=Math.floor(num1)+1;
-num2=Math.floor(num2)+1;
-var text=document.querySelector("body .container h1");
-var img1=document.querySelector(".container .dice .img1");
-var img2=document.querySelector(".container .dice .img2");
-var uppertext=document.querySelector(".container .dice p");
-img1.setAttribute("src","images/dice"+num1+".png");
-img2.setAttribute("src","images/dice"+num2+".png");
-if (num1 < num2) {
-    text.innerHTML = "Player 2 Wins!";
-  } 
-  else if (num1 > num2) {
-    text.innerHTML = "Player 1 Wins!";
-  }
-  else {
-    text.innerHTML = "It's a Draw!";
-  }
+var randomNumber1 = Math.floor(Math.random() * 6) + 1; //1-6
+
+var randomDiceImage = "dice" + randomNumber1 + ".png"; //dice1.png - dice6.png
+
+var randomImageSource = "images/" + randomDiceImage; //images/dice1.png - images/dice6.png
+
+var image1 = document.querySelectorAll("img")[0];
+
+image1.setAttribute("src", randomImageSource);
+
+
+var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+
+var randomImageSource2 = "images/dice" + randomNumber2 + ".png";
+
+document.querySelectorAll("img")[1].setAttribute("src", randomImageSource2);
+
+
+//If player 1 wins
+if (randomNumber1 > randomNumber2) {
+  document.querySelector("h1").innerHTML = "🚩 Play 1 Wins!";
+}
+else if (randomNumber2 > randomNumber1) {
+  document.querySelector("h1").innerHTML = "Player 2 Wins! 🚩";
+}
+else {
+  document.querySelector("h1").innerHTML = "Draw!";
+}
